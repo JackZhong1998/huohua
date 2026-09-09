@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: '异线 · 故事由你改写',
-  description: '探索互动故事，选择另一种人生。',
+  title: '火花 · 无限互动视频',
+  description: '火花互动视频平台演示。',
   icons: { icon: '/favicon.svg' },
 };
 
