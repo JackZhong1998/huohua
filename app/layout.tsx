@@ -14,6 +14,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: '异线 · 故事由你改写',
+  description: '探索互动故事，选择另一种人生。',
+  icons: { icon: '/favicon.svg' },
 };
 
 export default function RootLayout({
