@@ -1,6 +1,6 @@
 'use client';
 
-import {useState} from 'react';
+import {useEffect,useRef,useState} from 'react';
 import {ArrowLeft,ArrowRight,Check,Copy,Gamepad2,Globe2,Share2,Sparkles,Users,Zap} from 'lucide-react';
 import './bp.css';
 
@@ -14,9 +14,12 @@ const milestones:[string,string[]][]=[
 
 export default function BusinessPlan(){
  const[copied,setCopied]=useState(false);
+ const[scrolled,setScrolled]=useState(false);
+ const pageRef=useRef<HTMLElement>(null);
+ useEffect(()=>{const check=()=>setScrolled((pageRef.current?.scrollTop??0)>36);check();const timer=setTimeout(check,120);return()=>clearTimeout(timer)},[]);
  async function copyWechat(){await navigator.clipboard?.writeText('lifetour2026');setCopied(true);setTimeout(()=>setCopied(false),1800)}
- return <main className="bp-page">
-  <nav className="bp-nav"><a href="../"><ArrowLeft/>返回产品</a><span className="bp-brand">火花<i/></span><button onClick={()=>navigator.share?.({title:'火花｜天使轮商业计划书',url:location.href}).catch(()=>{})}><Share2/>分享</button></nav>
+ return <main ref={pageRef} className="bp-page" onScroll={e=>setScrolled(e.currentTarget.scrollTop>36)}>
+  <nav className={`bp-nav${scrolled?' compact':''}`}><a href="../" aria-label="返回产品"><ArrowLeft/><span>返回产品</span></a><span className="bp-brand">火花<i/></span><button aria-label="分享" onClick={()=>navigator.share?.({title:'火花｜天使轮商业计划书',url:location.href}).catch(()=>{})}><Share2/><span>分享</span></button></nav>
   <section className="bp-hero"><div className="hero-copy"><span className="eyebrow">ANGEL ROUND · 2026</span><h1>让视频从<br/><em>观看</em>变成<em>参与</em></h1><p>可看、可选、可由用户输入实时生成。</p><a href="#overview">阅读商业计划书<ArrowRight/></a></div><div className="hero-visual"><span>WATCH</span><span>CHOOSE</span><span>GENERATE</span><i/></div></section>
   <section className="bp-metrics"><article><small>核心切入</small><strong>18<sup>亿元</sup></strong><span>互动影游 · 2026E</span></article><article><small>相邻市场</small><strong>677.9<sup>亿元</sup></strong><span>中国微短剧 · 2025</span></article><article><small>长期方向</small><strong>无限流</strong><span>生产即消费</span></article></section>
 
@@ -53,7 +56,7 @@ export default function BusinessPlan(){
 
   <Section no="05" en="POSITIONING" title="产品定位">
    <SubTitle>5.1 与抖音、红果的区别</SubTitle>
-   <div className="position-map"><span className="axis-y top">主动创造</span><span className="axis-y bottom">被动消费</span><span className="axis-x left">真实世界</span><span className="axis-x right">虚构世界</span><i className="axis-line x"/><i className="axis-line y"/><div className="map-point spark"><Sparkles/><b>火花</b><small>虚构世界，可看可选可生成</small></div><div className="map-point douyin"><b>抖音</b><small>记录真实、被动刷</small></div><div className="map-point hongguo"><b>红果短剧</b><small>虚构故事、被动看</small></div></div>
+   <div id="position-map" className="position-map"><span className="axis-y top">主动创造</span><span className="axis-y bottom">被动消费</span><span className="axis-x left">真实世界</span><span className="axis-x right">虚构世界</span><i className="axis-line x"/><i className="axis-line y"/><div className="map-point spark"><Sparkles/><b>火花</b><small>虚构世界，可看可选可生成</small></div><div className="map-point douyin"><b>抖音</b><small>记录真实、被动刷</small></div><div className="map-point hongguo"><b>红果短剧</b><small>虚构故事、被动看</small></div></div>
    <ul className="plain-list"><li><b>抖音：</b>记录和消费真实世界。</li><li><b>红果：</b>观看预先制作的虚构故事。</li><li><b>火花：</b>进入虚构世界，并决定它如何发展。</li></ul>
    <p className="body-copy">火花从第一天建立“可看也可选”心智。不强行把红果用户改造成创作者，而是让同一用户随时调整参与程度。</p>
    <SubTitle>5.2 三种消费强度</SubTitle>
