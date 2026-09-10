@@ -60,3 +60,6 @@
 .mode-toggle>i{position:relative;width:42px;height:23px;border-radius:13px;background:#343640;box-shadow:inset 0 1px 4px #0006;transition:background .3s var(--ease)}
 .mode-toggle>i>b{position:absolute;top:3px;left:3px;width:17px;height:17px;border-radius:50%;background:#fff;box-shadow:0 3px 9px #0007;transition:transform .34s cubic-bezier(.22,1,.36,1)}
 .mode-toggle.watch>i{background:#ff4f79}.mode-toggle.watch>i>b{transform:translateX(19px)}
+.feed-enter{background:rgba(12,13,18,.38);border-top:1px solid #ffffff12;backdrop-filter:blur(20px) saturate(135%)}
+.feed-caption{text-shadow:0 2px 12px #000,0 1px 4px #000}
+.movie-editor .editor-control{background:transparent}
