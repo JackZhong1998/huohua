@@ -71,7 +71,7 @@ export default function BusinessPlan(){
   </Section>
 
   <Section no="08" en="WHY NOW" title="为什么现在：视频生成成本快速下降">
-   <div className="cost-compare"><article><span>Seedance 2.0</span><small>约 720p · 约 US$0.15/秒*</small><strong>约 US$2.25</strong><i style={{'--w':'100%'} as React.CSSProperties}/></article><article><span>MiniMax H3 Max</span><small>768p · US$0.08/秒标价</small><strong>US$1.20</strong><i style={{'--w':'53%'} as React.CSSProperties}/></article><article><span>H3 Max 发布期促销</span><small>768p · US$0.02/秒</small><strong>US$0.30</strong><i style={{'--w':'13%'} as React.CSSProperties}/></article></div>
+   <div className="cost-chart"><div className="cost-chart-head"><div><b>15 秒视频成本</b><small>USD · 同一比例尺</small></div><div className="cost-axis"><span>$0</span><span>$0.75</span><span>$1.50</span><span>$2.25</span></div></div><CostRow name="Seedance 2.0" spec="约 720p · 约 US$0.15/秒*" value="约 US$2.25" width="100%"/><CostRow name="MiniMax H3 Max" spec="768p · US$0.08/秒标价" value="US$1.20" width="53.3%"/><CostRow name="H3 Max 发布期促销" spec="768p · US$0.02/秒" value="US$0.30" width="13.3%"/></div>
    <Lead>同档位 15 秒视频生成成本从约 US$2.25 降至 US$1.20；发布期可低至 US$0.30。成本下降与推理提速共同支持更高频、更低门槛的内容供给。</Lead>
    <p className="source">Seedance 2.0 公开报价因渠道与地区不同而变化，此处仅作趋势展示；正式材料应以尽调时官方商务报价统一口径。H3 Max 促销价格截至 2026 年 9 月 14 日。</p>
   </Section>
@@ -100,7 +100,8 @@ export default function BusinessPlan(){
   </Section>
 
   <Section no="14" en="FUNDRAISING" title="融资用途">
-   <Lead>本轮为天使轮融资，资金主要用于：</Lead>
+   <div className="funding-ask"><span>天使轮</span><strong>500<sup>万人民币</sup></strong><p>本轮目标融资金额</p></div>
+   <Lead>本轮资金主要用于：</Lead>
    <div className="fund-grid">{['首批互动影视游戏的内容制作与发行','核心产品、AI 工程与内容团队建设','剧本 Agent、导演 Agent 和互动编辑器研发','视频生成成本优化、模型评测与安全能力','用户增长与商业化验证'].map((x,i)=><article key={x}><span>0{i+1}</span><p>{x}</p></article>)}</div>
   </Section>
 
@@ -118,3 +119,4 @@ function Value({n,title,children}:{n:string;title:string;children:React.ReactNod
 function MarketScale({kicker,now,future,note,ratio}:{kicker:string;now:string;future:string;note:string;ratio:string}){return <article><header><span>{kicker}</span><small>{note}</small></header><div className="scale-row"><b>当前</b><p>{now}</p><i className="current" style={{'--w':ratio} as React.CSSProperties}/></div><div className="scale-row"><b>预测</b><p>{future}</p><i className="future"/></div></article>}
 function Table({heads,rows}:{heads:string[];rows:string[][]}){return <div className="data-table"><table><thead><tr>{heads.map(h=><th key={h}>{h}</th>)}</tr></thead><tbody>{rows.map((r,i)=><tr key={i}>{r.map((c,j)=><td key={j}>{c}</td>)}</tr>)}</tbody></table></div>}
 function StepBlock({no,title,items}:{no:string;title:string;items:string[]}){return <article><span>{no}</span><h3>{title}</h3><ul>{items.map(x=><li key={x}>{x}</li>)}</ul></article>}
+function CostRow({name,spec,value,width}:{name:string;spec:string;value:string;width:string}){return <article className="cost-row"><div><b>{name}</b><small>{spec}</small></div><div className="cost-track"><i style={{'--w':width} as React.CSSProperties}/><span>{value}</span></div></article>}
