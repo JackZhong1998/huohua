@@ -20,7 +20,7 @@ const choices:Record<string,string[]>={intro:['了解团队','了解 idea','了�
 export default function App(){
  const[page,setPage]=useState('home'),[story,setStory]=useState(false),[film,setFilm]=useState('hook'),[branch,setBranch]=useState(false),[timeline,setTimeline]=useState(false),[contact,setContact]=useState(false),[muted,setMuted]=useState(true),[paused,setPaused]=useState(false),[feedIndex,setFeedIndex]=useState(0),[path,setPath]=useState<string[]>([]),[playMode,setPlayMode]=useState<'game'|'watch'>('game'),[toast,setToast]=useState('');const feed=useRef<HTMLDivElement>(null),hookTime=useRef(0);
  useEffect(()=>{if(!toast)return;const t=setTimeout(()=>setToast(''),2200);return()=>clearTimeout(t)},[toast]);
- useEffect(()=>{if(page!=='home'||story)return;const buttons=document.querySelectorAll<HTMLButtonElement>('.feed-head button');const follow=buttons[1];if(!follow)return;const open=()=>setToast('商业计划书请联系团队');follow.addEventListener('click',open);return()=>follow.removeEventListener('click',open)},[page,story]);
+ useEffect(()=>{if(page!=='home'||story)return;const buttons=document.querySelectorAll<HTMLButtonElement>('.feed-head button');const follow=buttons[1];if(!follow)return;const open=()=>{window.location.href='bp/'};follow.addEventListener('click',open);return()=>follow.removeEventListener('click',open)},[page,story]);
  function enter(ended=false){setStory(true);setFilm(ended?'intro':'hook');setBranch(false);setPaused(false)}
  function ended(){if(film==='hook'){setFilm('intro');setBranch(false)}else setBranch(true)}
  function pick(v:string){if(v==='联系方式'){setContact(true);setBranch(false);return}setPath(p=>[...p,v]);setFilm(v==='了解团队'?'team':v==='了解 idea'?'idea':'market');setBranch(false);setPaused(false)}

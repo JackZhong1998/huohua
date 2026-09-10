@@ -27,6 +27,8 @@ jobs:
       - run: npm run build:pages
       - name: Prepare Pages artifact
         run: |
+          mkdir -p dist-pages/bp
+          cp dist-pages/index.html dist-pages/bp/index.html
           touch dist-pages/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
