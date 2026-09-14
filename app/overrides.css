@@ -88,6 +88,20 @@
 .studio-entry-card h3 { margin: 4px 0; font-size: 15px; }
 .studio-entry-card p { color: #8f929c; font-size: 9px; }
 .studio-entry-card > svg { width: 16px; color: #7f828c; }
+.feed-head .studio-head-entry {
+  color: #ff7c99;
+}
+.feed-head .studio-head-entry::after {
+  content: '';
+  width: 5px;
+  height: 5px;
+  margin-left: 3px;
+  display: inline-block;
+  vertical-align: 2px;
+  border-radius: 50%;
+  background: #ff5479;
+  box-shadow: 0 0 10px #ff5479;
+}
 .selection-page > header {
   height: 56px;
 }
