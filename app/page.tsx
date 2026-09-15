@@ -154,6 +154,18 @@ export default function App() {
     const t = setTimeout(() => setToast(''), 2200);
     return () => clearTimeout(t);
   }, [toast]);
+  useEffect(() => {
+    if (page !== 'home' || story) return;
+    const buttons =
+      document.querySelectorAll<HTMLButtonElement>('.feed-head button');
+    const follow = buttons[1];
+    if (!follow) return;
+    const open = () => {
+      window.location.href = 'bp/';
+    };
+    follow.addEventListener('click', open);
+    return () => follow.removeEventListener('click', open);
+  }, [page, story]);
   function enter(ended = false) {
     setStory(true);
     setFilm(ended ? 'intro' : 'hook');
@@ -188,15 +200,7 @@ export default function App() {
                   <Logo />
                   <div>
                     <button className="active">推荐</button>
-                    <button onClick={() => { window.location.href = '/bp'; }}>
-                      BP
-                    </button>
-                    <button
-                      className="studio-head-entry"
-                      onClick={() => { window.location.href = '/studio'; }}
-                    >
-                      Studio
-                    </button>
+                    <button>关注</button>
                   </div>
                 </div>
                 <div
@@ -1018,17 +1022,6 @@ function Profile({ go }: { go: () => void }) {
           <b>1</b>
         </div>
       </div>
-      <a className="studio-entry-card" href="/studio">
-        <div className="studio-entry-icon">
-          <Sparkles />
-        </div>
-        <div>
-          <span>WEB 创作工作台</span>
-          <h3>创作 Studio</h3>
-          <p>从选题、分支剧本到演示成片</p>
-        </div>
-        <ChevronRight />
-      </a>
       <button className="recent-card" onClick={go}>
         <div className="mini-kinetic">
           末日前
