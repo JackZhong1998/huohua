@@ -24,7 +24,7 @@ export default function BusinessPlan(){
   <section className="bp-metrics"><article><small>核心切入</small><strong>18<sup>亿元</sup></strong><span>互动影游 · 2026E</span></article><article><small>相邻市场</small><strong>677.9<sup>亿元</sup></strong><span>中国微短剧 · 2025</span></article><article><small>长期方向</small><strong>无限流</strong><span>生产即消费</span></article></section>
 
   <Section id="overview" no="01" en="PROJECT" title="项目概述">
-   <Lead>火花是一个独立于抖音、红果的游戏化视频平台。从互动影视游戏的生产与消费切入，逐步走向无限视频消费平台。</Lead>
+   <Lead>火花是一个互动式的视频平台。从互动影视游戏的生产与消费切入，逐步走向无限视频消费平台。将成为继抖音、红果之后的第三大视频平台。</Lead>
    <div className="path-grid"><Step n="01" title="先做付费意愿已验证的互动影视游戏">建立“可看可选”心智。</Step><Step n="02" title="再把制作经验沉淀为 AI 创作工具">扩大供给。</Step><Step n="03" title="最终升级为实时生成的无限流互动">借助 LLM、视频模型和世界模型，让固定分支走向无限。</Step></div>
    <Callout label="长期目标">生产即消费的 AI 原生视频内容平台。</Callout>
   </Section>
