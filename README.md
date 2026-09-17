@@ -13,7 +13,7 @@ npm run dev
 
 推送到 `main` 后，GitHub Actions 会构建静态站点并自动发布。
 
-- 产品演示：`https://jackzhong1998.github.io/huahuo/`
-- 独立展示页：`https://jackzhong1998.github.io/huahuo/bp/`
+- 产品演示：`https://jackzhong1998.github.io/huohua/`
+- 独立展示页：`https://jackzhong1998.github.io/huohua/bp/`
 
 仓库不保存商业计划书 Markdown 原稿、环境变量或 Sites 发布配置。
